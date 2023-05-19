@@ -32,7 +32,7 @@ export class RoutersController {
 
         uploadProductImage(@UploadedFile() file: Express.Multer.File) {
             if (!file) {
-                throw new BadRequestException('Asegurese que el archico sea una imagen')
+                throw new BadRequestException('Asegurese que el archico sea una imagen');
             }
             
             const getUrl = `${file.filename}`;

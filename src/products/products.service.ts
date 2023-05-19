@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { Article } from "./entitis/article.entity";
+import { Article } from './entitis/article.entity';
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { ArticleImage } from "./entitis/article-image.entity";
@@ -48,5 +48,11 @@ async create(articleDto: CreateArticleDto) {
         });
         await this.articleRepository.save(article);
         return article;
+    }
+
+    async remove(id: string) {
+        const article = await this.findOne(id);
+        await this.articleRepository.remove(article);
+        return 'Producto eliminado satisfactoriamente';
     }
     }

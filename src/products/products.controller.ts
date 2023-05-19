@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, ParseUUIDPipe, Post, Patch } from "@nestjs/common";
+import { Body, Controller, Get, Param, ParseUUIDPipe, Post, Patch,Delete } from "@nestjs/common";
 import { ArticlesService } from "./products.service";
 import { CreateArticleDto } from "./dto/product.dto";
 
@@ -36,4 +36,9 @@ export class ArticleController {
     ) {
         return this.articlesServiceRepo.update(id, updateArticleDto);
     }
-}
+
+    @Delete(':id')
+    remove(@Param('id', ParseUUIDPipe) id: string) {
+        return this.articlesServiceRepo.remove(id);
+    }
+    }
